@@ -1,4 +1,4 @@
-import {TextInput, View} from 'react-native';
+import {TextInput, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import {styles} from './styles';
 import {globalColors} from '../../styles/global';
@@ -12,9 +12,9 @@ export function InputTask() {
         style={styles.input}
         placeholder="Adicione uma nova tarefa"
       />
-      <View style={styles.plusBox}>
+      <TouchableOpacity style={styles.plusBox}>
         <PlusCircle color="white" />
-      </View>
+      </TouchableOpacity>
     </View>
   );
 }
