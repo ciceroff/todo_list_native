@@ -1,8 +1,9 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {FlatList, Text, View} from 'react-native';
 import {styles} from './styles';
 import {InputTask} from '../InputTask';
 import {TaskItem} from '../Task';
+import {Separator} from '../Separator';
 
 type Task = {
   key: string;
@@ -21,32 +22,33 @@ const tasks: Task[] = [
   {
     key: 'ac23ds',
     checked: false,
-    description: 'Abastecer os postos de gasolina com alcool',
+    description:
+      'Abastecer os postos de gasolina com alcool e fazer muitas outras coisas pq eu quero escrever para fazer um texto bem grande',
   },
 ];
 
 export function TaskList() {
   return (
     <View style={styles.taskListBody}>
-      <View>
-        <InputTask />
-      </View>
+      <InputTask />
       <View style={styles.textInfoBox}>
         <Text style={styles.createdText}>Criadas</Text>
         <Text style={styles.concludedText}>Concluídas</Text>
       </View>
 
-      <View>
-        {tasks.map(task => {
-          return (
-            <TaskItem
-              key={task.key}
-              description={task.description}
-              checked={task.checked}
-            />
-          );
-        })}
-      </View>
+      <FlatList
+        ItemSeparatorComponent={Separator}
+        data={tasks}
+        renderItem={({item}) => (
+          <TaskItem
+            checked={item.checked}
+            description={item.description}
+            remove_at={item.remove_at}
+            key={item.key}
+          />
+        )}
+        keyExtractor={item => item.key}
+      />
     </View>
   );
 }

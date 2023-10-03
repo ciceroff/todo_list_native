@@ -5,6 +5,7 @@ export const styles = StyleSheet.create({
   taskListBody: {
     backgroundColor: globalColors['gray-600'],
     height: '100%',
+    justifyContent: 'center',
   },
   createdText: {
     color: globalColors.blue,

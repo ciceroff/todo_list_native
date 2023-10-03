@@ -2,6 +2,7 @@ import {View, Text, TouchableOpacity} from 'react-native';
 import React, {useState} from 'react';
 import {styles} from './styles';
 import {Trash} from 'phosphor-react-native';
+import {globalColors} from '../../styles/global';
 
 type TaskItemProps = {
   key: string;
@@ -15,17 +16,19 @@ export function TaskItem(props: TaskItemProps) {
 
   return (
     <View style={styles.taskBox}>
-      <TouchableOpacity
-        onPress={() => {
-          setSelectedRadio(true);
-        }}>
-        <View style={styles.radio}>
-          {selectRadio ? <View style={styles.radioBg} /> : null}
-        </View>
-      </TouchableOpacity>
-      <Text>{props.description}</Text>
-      <TouchableOpacity>
-        <Trash color="white" />
+      <View style={styles.descriptionAndButton}>
+        <TouchableOpacity
+          onPress={() => {
+            setSelectedRadio(!selectRadio);
+          }}>
+          <View style={styles.radio}>
+            {selectRadio ? <View style={styles.radioBg} /> : null}
+          </View>
+        </TouchableOpacity>
+        <Text style={styles.taskDescription}>{props.description}</Text>
+      </View>
+      <TouchableOpacity style={styles.trashBox}>
+        <Trash color={globalColors['gray-300']} />
       </TouchableOpacity>
     </View>
   );

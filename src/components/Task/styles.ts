@@ -14,13 +14,27 @@ export const styles = StyleSheet.create({
     backgroundColor: globalColors.blue,
     height: 14,
     width: 14,
-    margin: 3,
     borderRadius: 10,
   },
   taskBox: {
-    backgroundColor: globalColors['gray-300'],
+    backgroundColor: globalColors['gray-500'],
     borderRadius: 6,
     flexDirection: 'row',
     justifyContent: 'space-between',
+    height: 70,
+  },
+  taskDescription: {
+    color: globalColors['gray-100'],
+    marginLeft: 8,
+  },
+  descriptionAndButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    width: '80%',
+  },
+  trashBox: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    marginRight: 16,
   },
 });
